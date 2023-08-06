@@ -15,5 +15,5 @@ module.exports = cookieSession({
     resave: 'false',
     saveUninitialized: false,
     maxAge: 1000 * 60 * 60 * 24 * 7,
-    secure: false
+    secure: false,
 })

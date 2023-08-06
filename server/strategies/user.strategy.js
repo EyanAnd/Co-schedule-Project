@@ -4,7 +4,11 @@ const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 
 passport.serializeUser((user, done) => {
-    pool.query('SELECT * FROM "user" WHERE id = $1', [id])
+    done(null, user.id);
+})
+
+passport.deserializeUser((id, done) => {
+    pool.query('SELECT * FROM "user" WHERE "id" = $1', [id])
     .then((result) => {
         const user = result && result.rows && result.rows[0];
 
@@ -42,7 +46,7 @@ passport.use(
         })
         .catch((e) => {
             console.log('error with query for the user ', e); // log the error
-            done(error, null); // done will take the error and the user which is null and 
+            done(e, null); // done will take the error and the user which is null and 
             // will result in the server giving a 500 status code
         });
     })
