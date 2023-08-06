@@ -1,13 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const passport = require('passport');
 require('dotenv').config();
 const app = express();
 
 // modules for routes
 
 const sessionMiddleware = require('./modules/session-middleware'); // bring in modules session middleware
-const passport = require(); // bring in user strategy here
+const passport = require('./strategies/user.strategy'); // bring in user strategy here
 // body-parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
