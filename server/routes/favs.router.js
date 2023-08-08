@@ -35,6 +35,24 @@ router.put('/', rejectUnauthenticated, (req, res) => {
         console.log('there was an error updating the comments ', err);
     });
 });
+
+// update comments for the fav
+router.put('/rate', rejectUnauthenticated, (req, res) => {
+    // grab user
+    const user_id = req.user.id;
+    // grab new rating from the body
+    const newRating = req.body.rating
+    // grab fav id
+    const gif_id = req.body.id
+    // queryText
+    const queryText = `UPDATE "favs" SET "rating" = $1 WHERE "id" = $2 AND "user_id" = $3;`;
+    pool.query(queryText, [newRating, gif_id, user_id]).then(result => {
+        console.log(result) // check the new update
+        res.sendStatus(200); // send an ok
+    }).catch(err => {
+        console.log('there was an error updating the comments ', err);
+    });
+});
 // delete to take a url off of the users list.
 router.delete('/', rejectUnauthenticated, (req, res) => {
     const fav_id = req.body.id; // grab user
