@@ -1,5 +1,5 @@
 import axios from "axios";
-import { put, takeEvery, takeLatest } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 
 function* favsSaga() {
     // put all generator functions for favorites saga here
@@ -64,10 +64,9 @@ function* deleteFromFav(action) {
         console.log(response.data); // check the data
         yield put({ type: 'FETCH_USER_FAV' }); // update the users list
     } catch (err) {
-        console.log('there was an error deleting a gif from the favs list '. err);
+        console.log('there was an error deleting a gif from the favs list ', err);
     }
 };
-
 
 export default favsSaga;
 
