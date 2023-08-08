@@ -1,7 +1,7 @@
 import axios from "axios";
-import { takeLatest, takeEvery, put } from "redux-saga/effects";
+import { takeEvery, put } from "redux-saga/effects";
 
-export default function* searchSaga() {
+function* searchSaga() {
     // add search saga generator functions in here
     yield takeEvery('FETCH_SEARCH_RESULTS', fetchSearchResults);
 };
@@ -14,4 +14,6 @@ function* fetchSearchResults(action) {
     } catch (err) {
         console.log('there was an getting getting the search resutls ', err)
     }
-}
+};
+
+export default searchSaga;

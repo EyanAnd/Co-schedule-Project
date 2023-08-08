@@ -1,7 +1,7 @@
 import axios from "axios";
 import { put, takeLatest } from 'redux-saga/effects';
 
-export default function* userSaga() {
+function* userSaga() {
     // put other generator functions in here for the user saga
     yield takeLatest('FETCH_USER', fetchUser);
 };
@@ -23,3 +23,5 @@ function* fetchUser(action) {
     }
 
 }
+
+export default userSaga;
