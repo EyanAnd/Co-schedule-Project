@@ -71,8 +71,8 @@ router.post('/',rejectUnauthenticated, (req, res) => {
     // grab user id
     const user_id = req.user.id
     // queryText
-    const queryText = `INSERT INTO "favs" (user_id, url, comments) VALUES ($1, $2, $3);`;
-    pool.query(queryText, [user_id, req.body.url, req.body.comments])
+    const queryText = `INSERT INTO "favs" (user_id, url, comments, rating) VALUES ($1, $2, $3, $4);`;
+    pool.query(queryText, [user_id, req.body.url, req.body.comments, req.body.rating])
     .then(result => {
         console.log('added a gif ', result);
         res.sendStatus(201);
