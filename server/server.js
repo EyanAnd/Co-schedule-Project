@@ -7,6 +7,7 @@ const passport = require('./strategies/user.strategy'); // bring in user strateg
 
 // modules for routes
 const userRouter = require('./routes/user.router');
+const searchRouter = require('./routes/search.router');
 
 
 // body-parser middleware
@@ -22,6 +23,7 @@ app.use(passport.session());
 
 // routes
 app.use('/user', userRouter); // run user rotuer base with the user router requests
+app.use('/user/search', searchRouter) // run search router base with search router requests
 
 app.use(express.static('build'));
 
