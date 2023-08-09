@@ -1,9 +1,9 @@
-import { Flex, Heading, Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Flex, Tabs, TabList, Tab } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 // imports for components on the nav bar
 import LogoutButton from "../LogoutButton/LogoutButton";
-import LoginPage from "../LoginPage/LoginPage";
+
 
 
 export default function Nav() {
@@ -20,7 +20,7 @@ export default function Nav() {
                     <TabList>
                         <Tab onClick={() => history.push('/#/home')}>Home</Tab>
                         <Tab onClick={() => history.push('/favorites')}>Favorites</Tab>
-                        <Tab>Logout</Tab>
+                        <LogoutButton />
                     </TabList>
                 </Tabs>)
                 :

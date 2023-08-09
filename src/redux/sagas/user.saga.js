@@ -24,7 +24,3 @@ function* fetchUser() {
 }
 
 export default userSaga;
-
-// TODO make a register modal and
-// a logout button to logout to continue
-// to test the login and logout functionality

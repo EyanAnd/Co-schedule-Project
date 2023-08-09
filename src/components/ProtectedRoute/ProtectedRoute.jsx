@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 function ProtectedRoute({ component, children, ...props }) {
-    const user = useSelector((store) => store.User); // grab the user from the reducer store
+    const user = useSelector((store) => store.user); // grab the user from the reducer store
 
     const ProtectedComponent = component || (() => children); // protected component could be passed in or as a child prop
 

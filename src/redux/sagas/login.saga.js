@@ -26,11 +26,11 @@ function* login(action) {
     } catch (error) {
         // TODO: make more specific errors. 
         console.log('there was an error logging in a user ', error) // log the error
-        // if (error.response.status === 401) {
-        //     yield put({ type: 'LOGIN_FAILED' });
-        // } else {
-        //     yield put({ type: 'LOGIN_FAILED_NO_CODE' });
-        // }
+        if (error.response.status === 401) {
+            yield put({ type: 'LOGIN_FAILED' });
+        } else {
+            yield put({ type: 'LOGIN_FAILED_NO_CODE' });
+        }
     }
 };
 
