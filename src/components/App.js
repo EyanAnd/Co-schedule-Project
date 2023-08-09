@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+
 import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 // import components
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
@@ -14,14 +14,11 @@ import Footer from './Footer/Footer';
 function App() {
 
   // init use dispatch
-  const dispatch = useDispatch();
+
   // grab user from the store
   const user = useSelector((store) => store.user);
 
   // use effect to watch when the user changes
-  useEffect(() => {
-    dispatch({ type: "FETCH_USER"});
-  }, [dispatch])
 
 
   return (

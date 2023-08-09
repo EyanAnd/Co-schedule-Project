@@ -14,7 +14,7 @@ function* fetchUser() {
             withCredentials: true, // credentials allow the user to be recognized by the session
             // so when logged in it will returnt their information
         }
-        const response = axios.get('/user/', config);
+        const response = yield axios.get('/user/', config);
         console.log(response.data); // check the data
         yield put({ type: 'SET_USER', payload: response.data}); // update the reducer with the logged in user information
     } catch (err) {
@@ -24,3 +24,7 @@ function* fetchUser() {
 }
 
 export default userSaga;
+
+// TODO make a register modal and
+// a logout button to logout to continue
+// to test the login and logout functionality

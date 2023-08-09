@@ -30,6 +30,7 @@ router.post('/register', (req, res, next) => {
 });
 // use user strategy here, this will run the post if successful, if not it will give a 404.
 router.post('/login', userStrategy.authenticate('local'), (req, res) => {
+    console.log('is this even coming in')
     res.sendStatus(200); // tell the user ok if they have logged in!
 });
 

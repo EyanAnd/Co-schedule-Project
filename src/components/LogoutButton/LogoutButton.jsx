@@ -1,9 +1,16 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Button} from "@chakra-ui/react";
 
 export default function LogoutButton() {
+    // init use history
+    const history = useHistory();
+    // init dispatch
+    const dispatch = useDispatch();
+
     return (
-        <Flex>
-            <Text>Logout</Text>
-        </Flex>
+        <Button onClick={() => {dispatch({ type: 'LOGOUT'}); history.push('/login')}}>
+            Logout
+        </Button>
     )
 }

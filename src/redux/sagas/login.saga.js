@@ -1,6 +1,7 @@
 import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
-import errorsReducer from "../reducers/errors.reducer";
+
+
 
 function* loginSaga() {
     // put login and logout functions here
@@ -10,6 +11,7 @@ function* loginSaga() {
 
 function* login(action) {
     try {
+       console.log(action)
         // clear login error
         yield put({ type: 'CLEAR_LOGIN_ERROR' });
         // create config for credentials to allow the session to recognize the user
@@ -18,21 +20,21 @@ function* login(action) {
             withCredentials: true,
         };
         // make post to login
-        yield axios.post('/user/login', action.payload, config);
-
-        yield put({ type: 'FETCH_USER' }); // update the user reducer
-    } catch (err) {
+        const response = yield axios.post('/user/login', action.payload.user, config);
+        console.log(response.data) // check the data
+        yield put({ type: 'FETCH_USER', payload: response.data }); // update the user reducer
+    } catch (error) {
         // TODO: make more specific errors. 
-        console.log('there was an error logging in a user ', err) // log the error
-        if(err.resposne.status === 401) {
-            yield put({ type: 'LOGIN_FAILED' });
-        }  else {
-            yield put({ type: 'LOGIN_FAILED_NO_CODE' });
-        }
+        console.log('there was an error logging in a user ', error) // log the error
+        // if (error.response.status === 401) {
+        //     yield put({ type: 'LOGIN_FAILED' });
+        // } else {
+        //     yield put({ type: 'LOGIN_FAILED_NO_CODE' });
+        // }
     }
 };
 
-function* logout(action) {
+function* logout() {
     try {
         // create config to allow the session to recognize the user who is logging out
         const config = {
