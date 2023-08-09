@@ -19,25 +19,30 @@ export default function RegisterPage() {
         dispatch({
             type: 'REGISTER',
             payload: {
-                username: username,
-                password: password,
+                user: {
+                    username: username,
+                    password: password,
+                },
             },
         });
+        setUsername('');
+        setPassword('');
+        history.push('/home')
     };
 
     return (
         <Flex display={'flex'} flexDirection={'row'} gap={2} padding={2}>
-        <Container flexDirection={'column'} display={'flex'} alignItems={'center'} >
-            <Heading>Register</Heading>
-            <Flex flexDirection={'column'} width={'50%'} gap={4} padding={2}>
-                <Input variant={'flushed'} placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <Input variant={'flushed'} placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </Flex>
-            <Flex flexDirection={'row'} gap={2}>
-                <Button onClick={registerUser} >Register</Button>
-                <Button onClick={() => history.push('/login')}>Login</Button>
-            </Flex>
-        </Container>
-    </Flex>
+            <Container flexDirection={'column'} display={'flex'} alignItems={'center'} >
+                <Heading>Register</Heading>
+                <Flex flexDirection={'column'} width={'50%'} gap={4} padding={2}>
+                    <Input variant={'flushed'} placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <Input variant={'flushed'} placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </Flex>
+                <Flex flexDirection={'row'} gap={2}>
+                    <Button onClick={registerUser} >Register</Button>
+                    <Button onClick={() => history.push('/login')}>Login</Button>
+                </Flex>
+            </Container>
+        </Flex>
     )
 }
