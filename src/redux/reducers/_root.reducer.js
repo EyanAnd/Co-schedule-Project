@@ -3,12 +3,14 @@ import { combineReducers } from "redux";
 import userReducer from "./user.reducer";
 import favsReducer from "./favs.reducer";
 import searchReducer from "./search.reducer";
+import errorsReducer from "./errors.reducer";
 
 const rootReducer = combineReducers({
     // reducers here
-    User: userReducer, // holds user data
-    Favorites: favsReducer, // holds user favorites list data
-    Search: searchReducer, // holds search results data
+    user: userReducer, // holds user data
+    favorites: favsReducer, // holds user favorites list data
+    search: searchReducer, // holds search results data
+    errorsReducer,
 });
 
 export default rootReducer;

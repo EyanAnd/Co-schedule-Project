@@ -3,6 +3,7 @@ import { all } from 'redux-saga/effects';
 import userSaga from './user.saga';
 import favsSaga from './favs.saga';
 import searchSaga from './search.saga';
+import loginSaga from './login.saga';
 
 
 export default function* rootSaga() {
@@ -11,6 +12,7 @@ export default function* rootSaga() {
         userSaga(),
         favsSaga(),
         searchSaga(),
+        loginSaga(),
     ]);
 };
 

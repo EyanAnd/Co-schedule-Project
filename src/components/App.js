@@ -9,18 +9,19 @@ import HomePage from './HomePage/HomePage';
 import LoginPage from './LoginPage/LoginPage';
 import RegisterModal from './RegisterModal/RegisterModal';
 import Nav from './Nav/Nav';
+import Footer from './Footer/Footer';
 
 function App() {
 
   // init use dispatch
   const dispatch = useDispatch();
   // grab user from the store
-  const user = useSelector((store) => store.User);
+  const user = useSelector((store) => store.user);
 
   // use effect to watch when the user changes
   useEffect(() => {
     dispatch({ type: "FETCH_USER"});
-  }, [user, dispatch])
+  }, [dispatch])
 
 
   return (
@@ -46,7 +47,11 @@ function App() {
         <Route exact path='/register'>
           <RegisterModal />
         </Route>
+        <Route exact path='/login'>
+          <LoginPage />
+        </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }
