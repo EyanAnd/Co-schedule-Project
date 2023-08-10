@@ -15,7 +15,7 @@ export default function FavoritesPage() {
     const favs = useSelector((store) => store.favorites)
     useEffect(() => {
         dispatch({ type: 'FETCH_USER_FAV' });
-    }, [dispatch])
+    }, [])
 
     // set state for comments
     const [newComment, setNewComment] = useState({});
@@ -23,6 +23,10 @@ export default function FavoritesPage() {
     // ratings state
     const [ratings, setRatings] = useState({});
 
+    // set edit mode for comments
+    const [editMode, setEditMode] = useState(false);
+    // set state for selected gif
+    const [selectedGif, setSelectedGif] = useState(null);
 
     // function for rating a gif
     const rateGif = (gifId, rating) => {
@@ -41,12 +45,22 @@ export default function FavoritesPage() {
         })
     };
 
-    // update comment for gif id
-    const updateComment = (gifId, value) => {
-        setNewComment((prevComment) => ({
-            ...prevComment,
-            [gifId]: value
-        }));
+    const updateComment = (gif) => {
+        let comment; // create comments variable to send in dispatch
+
+
+        // create logic for comment new comment
+        newComment ? comment = newComment : comment = gif.comment;
+
+        dispatch({
+            type: 'UPDATE_COMMENT_ON_FAV',
+            payload: {
+                id: gif.id,
+                comments: comment
+            }
+        })
+        setNewComment('');
+        setEditMode(false);
 
     }
 
@@ -74,17 +88,18 @@ export default function FavoritesPage() {
                                     ))}
                                 </Flex>
                                 <Flex>
-                                    {favs.comments ? (
+                                    {editMode && selectedGif === gif.id ? (
                                         <>
-                                            <Text>{favs.comments}</Text>
-                                            <Button>Edit</Button>
+                                            <Input placeholder={gif.comment} value={newComment} onChange={(e) => setNewComment(e.target.value)} />
+                                            <Button onClick={() => updateComment(gif)}>Save</Button>
                                         </>
-                                    ) : (
+                                    )
+                                        :
                                         <>
-                                            <Input placeholder="leave a comment" value={newComment[gif.id]} onChange={(e) => { updateComment(gif.id, e.target.value) }} />
-                                            <Button>Save</Button>
+                                            <Text>{gif.comments ? gif.comments : 'Click edit to add a comment'}</Text>
+                                            <Button onClick={() => {setEditMode(true); setSelectedGif(gif.id)}}>Edit</Button>
                                         </>
-                                    )}
+                                    }
                                 </Flex>
                             </Flex>
                         </Flex>
