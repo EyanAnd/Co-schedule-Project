@@ -26,7 +26,7 @@ function App() {
   return (
     <Router>
       {/* show this information regardless of if the user is logged in or not */}
-      <Flex>
+      <Flex flexDirection={'column'} justifyContent={'space-between'} w={'100%'}>
         <Nav />
       </Flex>
       <Switch>
