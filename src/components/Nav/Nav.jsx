@@ -1,4 +1,4 @@
-import { Flex, Tabs, TabList, Tab, ButtonGroup, Button, Heading } from "@chakra-ui/react";
+import { Flex, Tabs, TabList, Tab, ButtonGroup, Button, Heading, Link } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 // imports for components on the nav bar
@@ -15,14 +15,14 @@ export default function Nav() {
     return (
         <Flex justifyContent={'space-between'} align={'center'} gap={2} padding={4} >
             <Flex>
-                <Heading>Co-Schedule Project</Heading>
+                <Heading as={'button'} variant={'link'} color={'brand.orange'} onClick={() => history.push('/home')}>Co-Schedule Project</Heading>
             </Flex>
             {/*  is a user logged in? if so show these routes */}
             <Flex>
                 {user.id ? (
                     <>
-                        <ButtonGroup al>
-                            <Button size={'lg'} variant={'link'} onClick={() => history.push('/#/home')}>Home</Button>
+                        <ButtonGroup >
+                            <Button  size={'lg'} variant={'link'} onClick={() => history.push('/#/home')}>Home</Button>
                             <Button size={'lg'} variant={'link'} onClick={() => history.push('/favorites')}>Favorites</Button>
                             <LogoutButton />
                         </ButtonGroup>
@@ -31,8 +31,8 @@ export default function Nav() {
                     // if a user isn't logged in, show these routes
                     <>
                         <ButtonGroup gap={3}>
-                            <Button size={'lg'} variant={'link'} onClick={() => history.push('/home')}>Home</Button>
-                            <Button size={'lg'} variant={'link'} onClick={() => history.push('/login')}>Login / Register </Button>
+                            <Button color={'brand.text'} size={'lg'} variant={'link'} onClick={() => history.push('/home')}>Home</Button>
+                            <Button color={'brand.text'} size={'lg'} variant={'link'} onClick={() => history.push('/login')}>Login / Register </Button>
                         </ButtonGroup>
                     </>}
             </Flex>

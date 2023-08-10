@@ -5,11 +5,25 @@ import store from './redux/store';
 import App from './components/App';
 import { Provider } from 'react-redux'; // bring in provider for redux to managae our store
 // chakra componenets
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+
+// grab colors for the theme 
+const colors = {
+  brand: {
+  orange: '#d4765d',
+  accent: '#ffe1d1',
+  text: '#595959',
+  },
+};
+
+// create theme
+const theme = extendTheme({
+  colors,
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <Provider store={store}>
       <App />
     </Provider>

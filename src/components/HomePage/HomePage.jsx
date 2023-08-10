@@ -25,12 +25,12 @@ export default function HomePage() {
     return (
         <Flex gap={4} padding={2} direction={'column'} justifyContent={'center'}>
             <Flex p={4} gap={4} direction={'column'}>
-                <Heading size={'xs'} textTransform={'uppercase'} align={'center'}>Search for a gif </Heading>
+                <Heading size={'xs'} color={'brand.text'} textTransform={'uppercase'} align={'center'}>Search for a gif </Heading>
                 <Flex justifyContent={'center'} align={'center'} gap={2} padding={1}>
                     <Flex w={'25%'}>
-                        <Input value={search} onChange={(e) => setSearch(e.target.value)} />
+                        <Input color={'brand.text'} value={search} onChange={(e) => setSearch(e.target.value)} />
                     </Flex>
-                    <Button onClick={() => dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: search })}>Search</Button>
+                    <Button color={'white'} bgColor={'brand.orange'} onClick={() => dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: search })}>Search</Button>
                 </Flex>
             </Flex>
             {/* is a user searching? if so, show this */}
@@ -64,7 +64,7 @@ export default function HomePage() {
                 :
                 <>
                     <Flex justifyContent={'center'} >
-                        <Heading size={'sm'} textTransform={'uppercase'}>Login to create a list of your fav gifs!</Heading>
+                        <Heading color={'brand.text'} size={'sm'} textTransform={'uppercase'}>Login to create a list of your fav gifs!</Heading>
                     </Flex>
                     <SimpleGrid columns={3} spacing={4}>
                         {searchResults.map(gif => (
