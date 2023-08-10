@@ -25,7 +25,6 @@ export default function HomePage() {
     return (
         <Flex gap={4} padding={2} direction={'column'} justifyContent={'center'}>
             <Flex p={4} gap={4} direction={'column'}>
-                <Heading>Welcome, {user.username}!</Heading>
                     <Text textTransform={'lowercase'} align={'center'}>Search for a gif </Text>
                 <Flex justifyContent={'center'} align={'center'} gap={2} padding={1}>
                     <Flex w={'25%'}>
@@ -63,7 +62,22 @@ export default function HomePage() {
                     </SimpleGrid>
                 </>
                 :
-                <></>}
+                <>
+                <SimpleGrid columns={3} spacing={4}>
+                    {searchResults.map(gif => (
+                        <Box key={gif.id} p={4} borderWidth="1px" borderColor="gray.300" borderRadius="md">
+                            <Flex flexDirection={'column'} position={'relative'}>
+                                <Flex gap={4} flexDirection={'column'}>
+                                    <Img on key={gif.id} src={gif.images.original.url} />
+                                    <Flex alignItems={'center'} mt={2}>
+                                        <Text>Login to create a list of your fav gifs!</Text>
+                                    </Flex>
+                                </Flex>
+                            </Flex>
+                        </Box>
+                    ))}
+                </SimpleGrid>
+            </>}
         </Flex>
     )
 }
