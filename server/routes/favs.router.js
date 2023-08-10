@@ -9,7 +9,7 @@ router.get('/',rejectUnauthenticated, (req, res) => {
     // grab user
     const user_id = req.user.id;
     // create query text
-    const queryText = `SELECT * FROM "favs" WHERE "user_id" = $1;`;
+    const queryText = `SELECT * FROM "favs" WHERE "user_id" = $1 ORDER BY "rating" DESC;`;
     pool.query(queryText, [user_id]).then(result => {
         res.send(result.rows); // send the gifs for the particular user
     }).catch(err => {
@@ -36,7 +36,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
-// update comments for the fav
+// update rating for the fav
 router.put('/rate', rejectUnauthenticated, (req, res) => {
     // grab user
     const user_id = req.user.id;
@@ -66,7 +66,7 @@ router.delete('/', rejectUnauthenticated, (req, res) => {
     });
 });
 
-// post to add a gif through a 'like'
+// post to add a gif through a 'plus icon'
 router.post('/',rejectUnauthenticated, (req, res) => {
     // grab user id
     const user_id = req.user.id

@@ -1,10 +1,9 @@
-import { Flex, Heading, Input, Button, Img, SimpleGrid, IconButton, Box, } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, Img, SimpleGrid, IconButton, Box, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 // imports for react icons
-import { FaStar } from 'react-icons/fa'
-import { FaCheck } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 export default function HomePage() {
 
@@ -20,15 +19,20 @@ export default function HomePage() {
     // set state for giphy search
     const [search, setSearch] = useState('');
 
+    
+
 
     return (
         <Flex gap={4} padding={2} direction={'column'} justifyContent={'center'}>
-            <Flex>
+            <Flex p={4} gap={4} direction={'column'}>
                 <Heading>Welcome, {user.username}!</Heading>
-            </Flex>
-            <Flex direction={'row'} w={'25%'} gap={2} padding={1} justifyContent={'center'}>
-                <Input value={search} onChange={(e) => setSearch(e.target.value)} />
-                <Button onClick={() => dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: search })}>Search</Button>
+                    <Text textTransform={'lowercase'} align={'center'}>Search for a gif </Text>
+                <Flex justifyContent={'center'} align={'center'} gap={2} padding={1}>
+                    <Flex w={'25%'}>
+                        <Input value={search} onChange={(e) => setSearch(e.target.value)} />
+                    </Flex>
+                    <Button onClick={() => dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: search })}>Search</Button>
+                </Flex>
             </Flex>
             {/* is a user searching? if so, show this */}
             {user.id ?
@@ -41,7 +45,7 @@ export default function HomePage() {
                                         <Img on key={gif.id} src={gif.images.original.url} />
                                         <Flex alignItems={'center'} mt={2}>
 
-                                            <IconButton icon={<FaCheck />} size={'sm'} onClick={() => dispatch({
+                                            <IconButton icon={<FaPlus />} size={'sm'} onClick={() => dispatch({
                                                 type: 'ADD_NEW_FAV',
                                                 payload: {
                                                     url: gif.images.original.url,
