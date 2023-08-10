@@ -1,4 +1,4 @@
-import { Flex, Heading, Img, Box, SimpleGrid, IconButton, Text, Input, Button } from "@chakra-ui/react";
+import { Flex, Heading, Img, Box, SimpleGrid, IconButton, Text, Input, Button, Tabs, TabList, Tab } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from 'react-icons/fa'
@@ -15,7 +15,7 @@ export default function FavoritesPage() {
     const favs = useSelector((store) => store.favorites)
     useEffect(() => {
         dispatch({ type: 'FETCH_USER_FAV' });
-    }, [])
+    }, [dispatch])
 
     // set state for comments
     const [newComment, setNewComment] = useState({});
@@ -71,6 +71,20 @@ export default function FavoritesPage() {
             <Flex justifyContent={'center'}>
                 <Heading>{user.username}'s Fav Gifs</Heading>
             </Flex>
+            <Flex flexDirection={'column'}>
+                <Heading>Filter By</Heading>
+                <Tabs>
+                    <TabList>
+                        <Tab onClick={() => dispatch({ type: 'FETCH_USER_FAV'})} >All</Tab>
+                        <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 0 })}>Not Yet Rated</Tab>
+                        <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 1 })}>1 Star</Tab>
+                        <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 2 })}>2 Star</Tab>
+                        <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 3 })}>3 Star</Tab>
+                        <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 4 })}>4 Star</Tab>
+                        <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 5 })}>5 Star</Tab>
+                    </TabList>
+                </Tabs>
+            </Flex>
             <SimpleGrid columns={3} spacing={4}>
                 {favs.map(gif => (
                     <Box key={gif.id} p={4} borderWidth="1px" borderColor="gray.300" borderRadius="md">
@@ -97,7 +111,7 @@ export default function FavoritesPage() {
                                         :
                                         <>
                                             <Text>{gif.comments ? gif.comments : 'Click edit to add a comment'}</Text>
-                                            <Button onClick={() => {setEditMode(true); setSelectedGif(gif.id)}}>Edit</Button>
+                                            <Button onClick={() => { setEditMode(true); setSelectedGif(gif.id) }}>Edit</Button>
                                         </>
                                     }
                                 </Flex>

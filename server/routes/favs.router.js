@@ -81,4 +81,31 @@ router.post('/',rejectUnauthenticated, (req, res) => {
     });
 });
 
+// route for filters
+router.get('/filter/:rating', rejectUnauthenticated, (req, res) => {
+    // grab user id
+    const user_id = req.user.id;
+
+    // grab rating number
+    let rating = Number(req.params.rating);
+    // create query text
+    let queryText;
+    // conditional for query text
+    if(rating === 0) {
+        queryText = `SELECT * FROM favs
+        WHERE user_id = $1
+        AND COALESCE(rating, 0) = $2;`;
+    } else if(rating > 0) {
+        queryText = `SELECT * FROM "favs" WHERE user_id = $1 AND "rating" = $2`
+    }
+    // send to database
+    pool.query(queryText, [user_id, rating])
+    .then(result => {
+        console.log(`getting results with ${rating} `, result);
+        res.send(result.rows);
+    }).catch(err => {
+        console.log('there was an error getting the filter rating ', err)
+    })
+})
+
 module.exports = router;

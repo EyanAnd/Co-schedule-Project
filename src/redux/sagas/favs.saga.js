@@ -8,6 +8,7 @@ function* favsSaga() {
     yield takeLatest('UPDATE_COMMENT_ON_FAV', updateCommentOnFav);
     yield takeLatest('UPDATE_RATING_ON_FAV', updateRatingOnFav);
     yield takeLatest('DELETE_FROM_FAV', deleteFromFav);
+    yield takeLatest('FILTER_GIFS', filterFavs);
 };
 
 // getting the favorites
@@ -67,6 +68,17 @@ function* deleteFromFav(action) {
         console.log('there was an error deleting a gif from the favs list ', err);
     }
 };
+
+function* filterFavs(action) {
+    try {
+        // grab response
+        const response = yield axios.get(`/user/favs/filter/${action.payload}`);
+        console.log(response.data); // check the data
+        yield put({ type: 'SET_FILTER_GIFS', payload: response.data})
+    } catch (err) {
+        console.log('there was an error in the filter favs saga ', err)
+    }
+}
 
 export default favsSaga;
 
