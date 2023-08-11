@@ -61,21 +61,20 @@ export default function FavoritesPage() {
         })
         setNewComment('');
         setEditMode(false);
-
-    }
+    };
 
 
 
     return (
         <Flex direction={'column'}>
-            <Flex justifyContent={'center'}>
-                <Heading>{user.username}'s Fav Gifs</Heading>
+            <Flex direction={'row'} justifyContent={'center'}>
+                <Heading color={'brand.text'} >{user.username}'s Fav Gifs</Heading>
             </Flex>
-            <Flex flexDirection={'column'}>
-                <Heading>Filter By</Heading>
-                <Tabs>
-                    <TabList>
-                        <Tab onClick={() => dispatch({ type: 'FETCH_USER_FAV'})} >All</Tab>
+            <Flex p={2} flexDirection={'column'}>
+                <Heading paddingBottom={'4'} size={'md'} color={'brand.text'}>Filter by rating below</Heading>
+                <Tabs color={'brand.text'} >
+                    <TabList color={'brand.orange'} >
+                        <Tab onClick={() => dispatch({ type: 'FETCH_USER_FAV' })} >All</Tab>
                         <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 0 })}>Not Yet Rated</Tab>
                         <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 1 })}>1 Star</Tab>
                         <Tab onClick={() => dispatch({ type: 'FILTER_GIFS', payload: 2 })}>2 Star</Tab>
@@ -87,7 +86,7 @@ export default function FavoritesPage() {
             </Flex>
             <SimpleGrid columns={3} spacing={4}>
                 {favs.map(gif => (
-                    <Box key={gif.id} p={4} borderWidth="1px" borderColor="gray.300" borderRadius="md">
+                    <Box key={gif.id} p={4} borderWidth="1px" borderColor="brand.accent" borderRadius="md">
                         <Flex flexDirection={'column'} position={'relative'}>
                             <Flex gap={4} flexDirection={'column'}>
                                 <Img key={gif.id} src={gif.url} />
@@ -96,24 +95,26 @@ export default function FavoritesPage() {
                                         <IconButton
                                             key={index}
                                             icon={<FaStar />}
-                                            color={index < gif.rating ? "gold" : "gray"}
+                                            color={index < gif.rating ? "brand.orange" : "brand.text"}
                                             onClick={() => rateGif(gif.id, index + 1)}
                                         />
                                     ))}
                                 </Flex>
-                                <Flex>
+                                <Flex direction={'row'} justifyContent={'space-between'}>
                                     {editMode && selectedGif === gif.id ? (
-                                        <>
-                                            <Input placeholder={gif.comments} value={newComment} onChange={(e) => setNewComment(e.target.value)} />
-                                            <Button onClick={() => updateComment(gif)}>Save</Button>
-                                        </>
+                                        <Flex gap={2}>
+                                            <Input color={'brand.text'} placeholder={gif.comments} value={newComment} onChange={(e) => setNewComment(e.target.value)} />
+                                            <Button bgColor={'brand.text'} color={'white'} onClick={() => updateComment(gif)}>Save</Button>
+                                        </Flex>
                                     )
                                         :
-                                        <>
-                                            <Text>{gif.comments ? gif.comments : 'Click edit to add a comment'}</Text>
-                                            <Button onClick={() => { setEditMode(true); setSelectedGif(gif.id) }}>Edit</Button>
-                                            <Button onClick={() => dispatch({ type: 'DELETE_FROM_FAV', payload: { id: gif.id }})}>Delete</Button>
-                                        </>
+                                        <Flex direction={'column'} justifyContent={'space-between'} gap={4}>
+                                            <Text color={'brand.text'}>{gif.comments ? gif.comments : 'Click edit to add a comment'}</Text>
+                                            <Flex flexDir={'row'} gap={2}>
+                                                <Button color={'white'} bgColor={'brand.orange'} onClick={() => { setEditMode(true); setSelectedGif(gif.id) }}>Edit</Button>
+                                                <Button bgColor={'red.500'} color={'white'} onClick={() => dispatch({ type: 'DELETE_FROM_FAV', payload: { id: gif.id } })}>Delete</Button>
+                                            </Flex>
+                                        </Flex>
                                     }
                                 </Flex>
                             </Flex>

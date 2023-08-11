@@ -38,7 +38,7 @@ export default function HomePage() {
                 <>
                     <SimpleGrid columns={3} spacing={4}>
                         {searchResults.map(gif => (
-                            <Box key={gif.id} p={4} borderWidth="1px" borderColor="gray.300" borderRadius="md">
+                            <Box key={gif.id} p={4} borderWidth="1px" borderColor="brand.accent" borderRadius="md">
                                 <Flex flexDirection={'column'} position={'relative'}>
                                     <Flex direction={'column'}>
                                         <Flex justifyContent={'space-between'} p={4} >

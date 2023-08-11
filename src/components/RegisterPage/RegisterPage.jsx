@@ -31,7 +31,7 @@ export default function RegisterPage() {
     };
 
     return (
-        <Container alignContent={'center'} justifyContent={'center'} borderColor={'brand.orange'} borderWidth={'1px'} borderRadius={'7%'}>
+        <Container alignContent={'center'} justifyContent={'center'} borderColor={'brand.orange'} borderWidth={'1px'} borderRadius={'md'}>
             <Flex display={'flex'} flexDirection={'row'} gap={2} padding={2}>
                 <Container flexDirection={'column'} display={'flex'} alignItems={'center'} >
                     <Heading color={'brand.text'}>Register</Heading>
