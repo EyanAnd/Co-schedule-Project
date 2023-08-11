@@ -60,8 +60,9 @@ function* updateRatingOnFav(action) {
 // deleting a favorite from the list
 function* deleteFromFav(action) {
     try {
+        console.log(action)
         // grab the response from the router call
-        const response = yield axios.delete(`/user/favs/`, action.payload);
+        const response = yield axios.delete(`/user/favs/`, {data: {id: action.payload.id }});
         console.log(response.data); // check the data
         yield put({ type: 'FETCH_USER_FAV' }); // update the users list
     } catch (err) {

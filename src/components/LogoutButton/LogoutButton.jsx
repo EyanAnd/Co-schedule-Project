@@ -9,7 +9,7 @@ export default function LogoutButton() {
     const dispatch = useDispatch();
 
     return (
-        <Button onClick={() => {dispatch({ type: 'LOGOUT'}); history.push('/login')}}>
+        <Button variant={'link'} size={'lg'} color={'brand.text'} onClick={() => {dispatch({ type: 'LOGOUT'}); history.push('/login')}}>
             Logout
         </Button>
     )

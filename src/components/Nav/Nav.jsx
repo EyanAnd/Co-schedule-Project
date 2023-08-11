@@ -22,8 +22,8 @@ export default function Nav() {
                 {user.id ? (
                     <>
                         <ButtonGroup >
-                            <Button  size={'lg'} variant={'link'} onClick={() => history.push('/#/home')}>Home</Button>
-                            <Button size={'lg'} variant={'link'} onClick={() => history.push('/favorites')}>Favorites</Button>
+                            <Button color={'brand.text'}  size={'lg'} variant={'link'} onClick={() => history.push('/#/home')}>Home</Button>
+                            <Button color={'brand.text'}  size={'lg'} variant={'link'} onClick={() => history.push('/favorites')}>Favorites</Button>
                             <LogoutButton />
                         </ButtonGroup>
                     </>)

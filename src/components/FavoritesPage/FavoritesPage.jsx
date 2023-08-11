@@ -112,6 +112,7 @@ export default function FavoritesPage() {
                                         <>
                                             <Text>{gif.comments ? gif.comments : 'Click edit to add a comment'}</Text>
                                             <Button onClick={() => { setEditMode(true); setSelectedGif(gif.id) }}>Edit</Button>
+                                            <Button onClick={() => dispatch({ type: 'DELETE_FROM_FAV', payload: { id: gif.id }})}>Delete</Button>
                                         </>
                                     }
                                 </Flex>

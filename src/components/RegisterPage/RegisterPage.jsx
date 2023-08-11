@@ -1,4 +1,4 @@
-import { Center, Button, Flex, Heading, Container, Input } from "@chakra-ui/react";
+import { Center, Button, Flex, Heading, Container, Input, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -31,18 +31,21 @@ export default function RegisterPage() {
     };
 
     return (
-        <Flex display={'flex'} flexDirection={'row'} gap={2} padding={2}>
-            <Container flexDirection={'column'} display={'flex'} alignItems={'center'} >
-                <Heading>Register</Heading>
-                <Flex flexDirection={'column'} width={'50%'} gap={4} padding={2}>
-                    <Input variant={'flushed'} placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                    <Input variant={'flushed'} placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </Flex>
-                <Flex flexDirection={'row'} gap={2}>
-                    <Button onClick={registerUser} >Register</Button>
-                    <Button onClick={() => history.push('/login')}>Login</Button>
-                </Flex>
-            </Container>
-        </Flex>
+        <Container alignContent={'center'} justifyContent={'center'} borderColor={'brand.orange'} borderWidth={'1px'} borderRadius={'7%'}>
+            <Flex display={'flex'} flexDirection={'row'} gap={2} padding={2}>
+                <Container flexDirection={'column'} display={'flex'} alignItems={'center'} >
+                    <Heading color={'brand.text'}>Register</Heading>
+                    <Flex flexDirection={'column'} width={'50%'} gap={4} padding={2}>
+                        <Input color={'brand.text'} variant={'flushed'} placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <Input color={'brand.text'} variant={'flushed'} placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </Flex>
+                    <Flex flexDirection={'row'} gap={2}>
+                        <Button color={'white'} bgColor={'brand.orange'} onClick={registerUser} >Register</Button>
+                        <Button color={'white'} bgColor={'brand.text'} onClick={() => history.push('/login')}>Login</Button>
+                    </Flex>
+                </Container>
+            </Flex>
+        </Container>
+
     )
 }

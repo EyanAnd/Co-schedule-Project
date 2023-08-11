@@ -55,8 +55,8 @@ router.put('/rate', rejectUnauthenticated, (req, res) => {
 });
 // delete to take a url off of the users list.
 router.delete('/', rejectUnauthenticated, (req, res) => {
-    const fav_id = req.body.id; // grab user
-    const user_id = req.user.id;
+    const fav_id = req.body.id; // grab the id from the body
+    const user_id = req.user.id; // grab user id
     const queryText = `DELETE FROM "favs" WHERE "id" = $1 AND "user_id" = $2;`;
     pool.query(queryText, [fav_id, user_id]).then(result => {
         console.log('deleted this gif ', result);

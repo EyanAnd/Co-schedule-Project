@@ -9,7 +9,6 @@ import HomePage from './HomePage/HomePage';
 import LoginPage from './LoginPage/LoginPage';
 import RegisterPage from './RegisterPage/RegisterPage';
 import Nav from './Nav/Nav';
-import Footer from './Footer/Footer';
 
 function App() {
 
@@ -50,7 +49,7 @@ function App() {
           <LoginPage />
         </Route>
       </Switch>
-      <Footer />
+
     </Router>
   );
 }

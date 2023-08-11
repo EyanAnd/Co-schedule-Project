@@ -1,4 +1,4 @@
-import { Container, Flex, Heading, Input, Button  } from "@chakra-ui/react";
+import { Container, Flex, Heading, Input, Button, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -36,18 +36,20 @@ export default function LoginPage() {
 
 
     return (
+        <Container alignContent={'center'} justifyContent={'center'} borderColor={'brand.orange'} borderWidth={'1px'} borderRadius={'7%'}>
             <Flex display={'flex'} flexDirection={'row'} gap={2} padding={2}>
                 <Container flexDirection={'column'} display={'flex'} alignItems={'center'} >
-                    <Heading>Login</Heading>
+                    <Heading color={'brand.text'}>Login</Heading>
                     <Flex flexDirection={'column'} width={'50%'} gap={4} padding={2}>
-                        <Input variant={'flushed'} placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                        <Input variant={'flushed'} placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <Input color={'brand.text'} variant={'flushed'} placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <Input color={'brand.text'} variant={'flushed'} placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </Flex>
                     <Flex flexDirection={'row'} gap={2}>
-                        <Button onClick={login} >Submit</Button>
-                        <Button onClick={() => history.push('/register')}>Register</Button>
+                        <Button color={'white'} bgColor={'brand.orange'} onClick={login} >Submit</Button>
+                        <Button bgColor={'brand.text'} color={'white'} onClick={() => history.push('/register')}>Register</Button>
                     </Flex>
                 </Container>
             </Flex>
+        </Container>
     )
 }

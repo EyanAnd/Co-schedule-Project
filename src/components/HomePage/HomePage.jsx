@@ -40,10 +40,9 @@ export default function HomePage() {
                         {searchResults.map(gif => (
                             <Box key={gif.id} p={4} borderWidth="1px" borderColor="gray.300" borderRadius="md">
                                 <Flex flexDirection={'column'} position={'relative'}>
-                                    <Flex gap={4} flexDirection={'column'}>
-                                        <Img on key={gif.id} src={gif.images.original.url} />
-                                        <Flex alignItems={'center'} mt={2}>
-
+                                    <Flex direction={'column'}>
+                                        <Flex justifyContent={'space-between'} p={4} >
+                                        <Text>Click the plus icon  to add to your favs!</Text>
                                             <IconButton icon={<FaPlus />} size={'sm'} onClick={() => dispatch({
                                                 type: 'ADD_NEW_FAV',
                                                 payload: {
@@ -52,9 +51,10 @@ export default function HomePage() {
                                                     comment: null
                                                 }
                                             })} />
-
                                         </Flex>
-
+                                        <Flex gap={4} flexDirection={'column'}>
+                                            <Img on key={gif.id} src={gif.images.original.url} />
+                                        </Flex>
                                     </Flex>
                                 </Flex>
                             </Box>
@@ -68,7 +68,7 @@ export default function HomePage() {
                     </Flex>
                     <SimpleGrid columns={3} spacing={4}>
                         {searchResults.map(gif => (
-                            <Box key={gif.id} p={4} borderWidth="1px" borderColor="gray.300" borderRadius="md">
+                            <Box key={gif.id} p={4} borderWidth="1px" borderColor="brand.accent" borderRadius="md">
                                 <Flex flexDirection={'column'} position={'relative'}>
                                     <Flex gap={4} flexDirection={'column'}>
                                         <Img on key={gif.id} src={gif.images.original.url} />
