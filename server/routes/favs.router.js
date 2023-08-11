@@ -75,7 +75,7 @@ router.post('/',rejectUnauthenticated, (req, res) => {
     pool.query(queryText, [user_id, req.body.url, req.body.comments, req.body.rating])
     .then(result => {
         console.log('added a gif ', result);
-        res.sendStatus(201);
+        res.sendStatus(201); // send a created status back
     }).catch(err => {
         console.log('there was an error creating a new fav gif ', err);
     });
@@ -91,6 +91,7 @@ router.get('/filter/:rating', rejectUnauthenticated, (req, res) => {
     // create query text
     let queryText;
     // conditional for query text
+    // if rating is 0 we will need to coalesce
     if(rating === 0) {
         queryText = `SELECT * FROM favs
         WHERE user_id = $1

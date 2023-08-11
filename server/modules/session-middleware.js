@@ -1,5 +1,5 @@
 const cookieSession = require('cookie-session');
-
+// create session that can be accessed by the backend
 const serverSessionSecret = () => {
     if(
         !process.env.SERVER_SESSION_SECRET || 
@@ -9,6 +9,7 @@ const serverSessionSecret = () => {
     }
 };
 
+// create the cookie session for a user
 module.exports = cookieSession({
     secret: serverSessionSecret() || 'secret',
     key: 'user',

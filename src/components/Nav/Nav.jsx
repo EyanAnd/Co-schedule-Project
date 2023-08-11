@@ -1,4 +1,4 @@
-import { Flex, Tabs, TabList, Tab, ButtonGroup, Button, Heading, Link } from "@chakra-ui/react";
+import { Flex, ButtonGroup, Button, Heading } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 // imports for components on the nav bar
@@ -10,7 +10,7 @@ export default function Nav() {
 
     // init use history
     const history = useHistory();
-    // user
+    // grab the current user
     const user = useSelector((store) => store.user)
     return (
         <Flex justifyContent={'space-between'} align={'center'} gap={2} padding={4} >

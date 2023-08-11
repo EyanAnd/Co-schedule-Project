@@ -9,6 +9,7 @@ export default function LogoutButton() {
     const dispatch = useDispatch();
 
     return (
+        // logout buttion that makes a dispatch to log the user out then push them to the login page
         <Button variant={'link'} size={'lg'} color={'brand.text'} onClick={() => {dispatch({ type: 'LOGOUT'}); history.push('/login')}}>
             Logout
         </Button>

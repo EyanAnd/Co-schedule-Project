@@ -23,8 +23,10 @@ const theme = extendTheme({
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  // wrap in a chakra provider and pass in the theme to use
   <ChakraProvider theme={theme}>
-    <Provider store={store}>
+    {/* wrap app in the store of our redux middleware */}
+    <Provider store={store}> 
       <App />
     </Provider>
   </ChakraProvider>

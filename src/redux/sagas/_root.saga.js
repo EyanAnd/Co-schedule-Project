@@ -10,11 +10,11 @@ import registrationSaga from './register.saga';
 export default function* rootSaga() {
     yield all([
         // bring in sagas here
-        userSaga(),
-        favsSaga(),
-        searchSaga(),
-        loginSaga(),
-        registrationSaga(),
+        userSaga(), // holds all functions for users
+        favsSaga(), // holds all functions for favorites list
+        searchSaga(), // holds all functions for search results
+        loginSaga(), // holds all functions for loggins in a user and logging out a user
+        registrationSaga(), // holds all functions for registering a user
     ]);
 };
 

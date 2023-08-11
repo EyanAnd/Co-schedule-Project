@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
     user: userReducer, // holds user data
     favorites: favsReducer, // holds user favorites list data
     search: searchReducer, // holds search results data
-    errorsReducer,
+    errorsReducer, // errors reducer to hold errors for loggin in and loggin out
 });
 
 export default rootReducer;

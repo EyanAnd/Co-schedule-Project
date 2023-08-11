@@ -1,6 +1,6 @@
 // init pg
 const pg = require('pg');
-let pool;
+let pool; // create pool variable
 
 // when deploying to the internet pivot to the database .env 
 if(process.env.DATABSE_URL) {
@@ -18,7 +18,7 @@ else {
     pool = new pg.Pool({
         host: 'localhost',
         port: 5432,
-        database: 'coschedule-project',
+        database: 'coschedule-project', // change to your own database name if need be
     });
 }
 

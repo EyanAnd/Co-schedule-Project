@@ -16,12 +16,12 @@ function* registerUser(action) {
 
         // automatically log in the user
         console.log(action.payload)
-        yield put({ type: 'LOGIN',  payload: action.payload });
+        yield put({ type: 'LOGIN',  payload: action.payload }); 
 
-        yield put({ type: 'SET_TO_LOGIN_MODE' });
+        yield put({ type: 'SET_TO_LOGIN_MODE' }); // update the login 
     } catch (err) {
         console.log('there was an error registering the user ', err);
-        yield put({ type: 'REGISTRATION_FAILED '})
+        yield put({ type: 'REGISTRATION_FAILED '}) // update the error code
     }
 }
 

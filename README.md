@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Giphy API Project(Co-Schedule Interview)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi! This is my project for the take home technical portion of my interview. 
 
-## Available Scripts
+This is an application that allows a user to search the Giphy API. 
+It allows registered users additional functionality such as adding to their favorites list and filtering their favorites based on rating.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+- To get started with this application, you will first need to fork and clone it down to your local computer.
+- I use postgreSQL for my database on postico. 
+- create a new database called `coschedule-project` and copy the `database.sql` file from the database and run the queries.
+One thing to note here is if you want to change it to a differnet name make sure to change the `pool.js` file in the `modules` folder.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Once you have your database going, you can jump in to your terminal and run `npm install` to install the neccesary dependencies.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- after everything in installed you can goahead and open a terminal inside your code editor and run `npm run server`.
+- open a second terminal and run `npm run client`
+- you'll also want to create a new `.env` with a `SERVER_SESSION+SECRET` for the cookie session security.
 
-### `npm test`
+And you should be good to go!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pages and functions
 
-### `npm run build`
+![user home page](./public/images/home-page.png);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This page allows the user to search for gifs as well as allow them to log in and register through the nav bar
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![user search page](./public//images/user-search-result.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is what a user search will look like.
+- They have the ability to go to their `favoritres` as well as add a gif to their favorites.
 
-### `npm run eject`
+![user favorites page](./public/images/user-favorites.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The user favorites page allows the registered user the ability to sculpt their favorites list in a few ways.
+- They can rate their gifs and leave comments on them.
+- They can sort their gifs by rating
+- Note that if a gif is added the rating comes in a 0 by default, so the user has to go to the tab marked `Not Yet Rated` to rate it.
+- Delete a gif.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Highlighted technologies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Chakra UI for the front end ui library
+- Redux
+- Node.js
+- React.js
+- Passport.js
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -6,6 +6,7 @@ function* searchSaga() {
     yield takeLatest('FETCH_SEARCH_RESULTS', fetchSearchResults);
 };
 
+// function to fetch search results
 function* fetchSearchResults(action) {
     try {
         console.log(action.payload)

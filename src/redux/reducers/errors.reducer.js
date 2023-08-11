@@ -1,6 +1,7 @@
 // this will hold all of the errors for logging in or logging out a user
 import { combineReducers } from "redux";
 
+// login message reducer
 const loginMessage = (state = '', action) => {
     switch (action.type) {
         case 'CLEAR_LOGIN_ERROR':
@@ -16,6 +17,7 @@ const loginMessage = (state = '', action) => {
     }
 };
 
+// register message reducer
 const registerMessage = (state = '', action) => {
     switch (action.type) {
         case 'CLEAR_REGISTRATION_ERROR':
