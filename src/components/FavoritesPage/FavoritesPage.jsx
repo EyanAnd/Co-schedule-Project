@@ -18,7 +18,7 @@ export default function FavoritesPage() {
     }, [dispatch])
 
     // set state for comments
-    const [newComment, setNewComment] = useState({});
+    const [newComment, setNewComment] = useState('');
 
     // ratings state
     const [ratings, setRatings] = useState({});
@@ -50,7 +50,7 @@ export default function FavoritesPage() {
 
 
         // create logic for comment new comment
-        newComment ? comment = newComment : comment = gif.comment;
+        newComment ? comment = newComment : comment = gif.comments;
 
         dispatch({
             type: 'UPDATE_COMMENT_ON_FAV',
@@ -104,7 +104,7 @@ export default function FavoritesPage() {
                                 <Flex>
                                     {editMode && selectedGif === gif.id ? (
                                         <>
-                                            <Input placeholder={gif.comment} value={newComment} onChange={(e) => setNewComment(e.target.value)} />
+                                            <Input placeholder={gif.comments} value={newComment} onChange={(e) => setNewComment(e.target.value)} />
                                             <Button onClick={() => updateComment(gif)}>Save</Button>
                                         </>
                                     )
