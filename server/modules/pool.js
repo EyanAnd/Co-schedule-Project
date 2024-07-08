@@ -18,7 +18,7 @@ else {
     pool = new pg.Pool({
         host: 'localhost',
         port: 5432,
-        database: 'coschedule-project', // change to your own database name if need be
+        database: 'your-database-name', 
     });
 }
 
